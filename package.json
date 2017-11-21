@@ -1,0 +1,32 @@
+{
+  "name": "cleaning-service",
+  "version": "1.0.0",
+  "description": "cleaning service app",
+  "main": "dist",
+  "scripts": {
+    "dev": "SET NODE_ENV=development && nodemon .src/index.js",
+    "grunt": "grunt",
+    "start": "node ./src/index.js"
+  },
+  "author": "uladimir lakomy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "cookie-parser": "1.4.3",
+    "errorhandler": "1.5.0",
+    "express": "4.16.2",
+    "method-override": "2.3.10"
+  },
+  "devDependencies": {
+    "@types/body-parser": "1.16.8",
+    "@types/cookie-parser": "1.4.1",
+    "@types/errorhandler": "0.0.32",
+    "@types/method-override": "0.0.31",
+    "gulp": "3.9.1",
+    "gulp-typescript": "3.2.3",
+    "ts-node": "3.3.0",
+    "tslint": "5.8.0",
+    "tslint-config-airbnb": "5.4.2",
+    "typescript": "2.6.1"
+  }
+}
