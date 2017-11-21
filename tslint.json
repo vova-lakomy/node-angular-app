@@ -5,6 +5,12 @@
       true,
       4,
       { "SwitchCase": 1 }
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
     ]
   }
 }
