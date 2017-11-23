@@ -8,7 +8,12 @@ const handler1 = (req: Request, res: Response, next: NextFunction) => {
 
 const handler2 = (req: Request, res: Response, next: NextFunction) => {
     console.log('handler 2');
-    res.end('handler_2');
+    next();
+};
+
+const handler3 = (req: Request, res: Response, next: NextFunction) => {
+    console.log('handler 3');
+    res.end('handler_3');
 };
 
 
@@ -21,7 +26,7 @@ export const routes = [
     {
         path : '/api/login',
         method : 'GET',
-        middleware : [handler2],
+        middleware : [handler2, handler3],
     },
 ];
 
