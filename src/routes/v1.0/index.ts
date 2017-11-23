@@ -7,8 +7,8 @@ const handler1 = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const handler2 = (req: Request, res: Response, next: NextFunction) => {
-    console.log('handler 1');
-    res.end('handler_1');
+    console.log('handler 2');
+    res.end('handler_2');
 };
 
 
