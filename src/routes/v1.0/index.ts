@@ -1,32 +1,15 @@
-import { NextFunction, Response, Request } from 'express';
-
-
-const handler1 = (req: Request, res: Response, next: NextFunction) => {
-    console.log('handler 1');
-    res.end('handler_1');
-};
-
-const handler2 = (req: Request, res: Response, next: NextFunction) => {
-    console.log('handler 2');
-    next();
-};
-
-const handler3 = (req: Request, res: Response, next: NextFunction) => {
-    console.log('handler 3');
-    res.end('handler_3');
-};
-
+import { userController } from '../../controllers';
 
 export const routes = [
     {
-        path : '/api/list',
+        path : '/api/users/',
         method : 'GET',
-        middleware : [handler1],
+        middleware : [userController.getAll],
     },
     {
-        path : '/api/login',
+        path : '/api/users/:userId',
         method : 'GET',
-        middleware : [handler2, handler3],
+        middleware : [userController.get],
     },
 ];
 
