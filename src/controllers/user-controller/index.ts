@@ -1,4 +1,5 @@
 import { NextFunction, Response, Request } from 'express';
+import { User } from '../../models';
 
 export class UserController {
 
@@ -7,7 +8,11 @@ export class UserController {
 
     public getAll = (req: Request, res: Response, next: NextFunction) => {
         console.log('UserController: getAll');
-        res.end('fetching all users');
+        User.find({}, (err, docs) => {
+            res.send(docs);
+            res.end();
+        });
+        // res.end('fetching all users');
     }
 
     public get = (req: Request, res: Response, next: NextFunction) => {
