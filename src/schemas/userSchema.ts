@@ -4,9 +4,8 @@ export const userSchema: Schema = new Schema({
     email: String,
     password: String,
     role: String,
-    ownerId: Schema.Types.ObjectId,
+    ownerId: String,
     createdAt: Date,
-    deletedAt: Date,
 });
 
 userSchema.pre('save', function (next) {

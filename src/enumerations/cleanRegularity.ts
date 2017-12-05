@@ -1,4 +1,4 @@
-enum CleaningRegularity {
+enum CleanRegularity {
     Once = 'ONCE',
     Weekly = 'WEEKLY',
     EveryTwoWeeks = 'EVERY_TWO_WEEKS',

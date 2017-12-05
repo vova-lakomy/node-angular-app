@@ -5,7 +5,7 @@ export interface OrderInterface {
     cleaningType: CleaningType;
     daysOfWeek: [Number];
     desiredDateTime: Date;
-    regularity: CleaningRegularity;
+    regularity: CleanRegularity;
     status: OrderStatus;
     createdAt: Date;
     deletedAt: Date;

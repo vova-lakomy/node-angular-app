@@ -1,5 +1,7 @@
-import { NextFunction, Response, Request } from 'express';
-import { User } from '../../models';
+import { NextFunction, Request, Response } from 'express';
+import { UserInterface } from '../../interfaces/UserInterface';
+import { userService } from '../../services';
+
 
 export class UserController {
 
@@ -8,16 +10,28 @@ export class UserController {
 
     public getAll = (req: Request, res: Response, next: NextFunction) => {
         console.log('UserController: getAll');
-        User.find({}, (err, docs) => {
-            res.send(docs);
-            res.end();
-        });
-        // res.end('fetching all users');
+        userService.listAsync()
+            .then((userList: UserInterface[]) => {
+                res.locals.users = userList;
+                next();
+            })
+            .catch((error) => {
+                console.error(error);
+                next(error);
+            });
+
     }
 
     public get = (req: Request, res: Response, next: NextFunction) => {
         console.log('UserController: get');
         res.end('fetching 1 user with id=' + req.params.userId);
+    }
+
+    public endResponse = (req: Request, res: Response, next: NextFunction) => {
+        const users: UserInterface[] = res.locals.users;
+        console.log('end request');
+        res.json(users);
+        res.end();
     }
 
 }
