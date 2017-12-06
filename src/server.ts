@@ -7,10 +7,6 @@ import errorhandler = require('errorhandler');
 import methodOverride = require('method-override');
 import { bindRoutes } from './routes';
 
-
-
-
-
 export class Server {
 
     private app: express.Application;
@@ -22,7 +18,9 @@ export class Server {
 
     private init(): void {
         this.app = express();
+        this.app.use(bodyParser.json());
         bindRoutes(this.app);
+
 
         (<any>mongoose).Promise = global.Promise;
 
@@ -36,6 +34,10 @@ export class Server {
 
         mongoose.connection.on('connected', () => {
             console.log('mongoDB connected');
+        });
+
+        mongoose.connection.on('disconnected', () => {
+            console.log('mongoDB  disconnected!');
         });
 
         mongoose.connect(this.mongoDbUrl, { useMongoClient: true });

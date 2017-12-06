@@ -6,14 +6,16 @@ import { userService } from '../../services';
 export class UserController {
 
     constructor() {
+        console.log('UserController constructor');
     }
 
     public getAll = (req: Request, res: Response, next: NextFunction) => {
-        console.log('UserController: getAll');
-        userService.listAsync()
+        const offset: number = Number(req.query['offset'] || 0);
+        const count: number = Number(req.query['count'] || 10);
+        userService.list(offset, count)
             .then((userList: UserInterface[]) => {
-                res.locals.users = userList;
-                next();
+                res.json(userList);
+                res.end();
             })
             .catch((error) => {
                 console.error(error);
@@ -23,15 +25,65 @@ export class UserController {
     }
 
     public get = (req: Request, res: Response, next: NextFunction) => {
-        console.log('UserController: get');
-        res.end('fetching 1 user with id=' + req.params.userId);
+        console.log('UserController: get ');
+        const id = req.params['userId'];
+        userService.get(id).then((user: UserInterface) => {
+            res.json(user);
+            res.end();
+        }).catch((error) => {
+            console.error(error);
+            next(error);
+        });
     }
 
-    public endResponse = (req: Request, res: Response, next: NextFunction) => {
-        const users: UserInterface[] = res.locals.users;
-        console.log('end request');
-        res.json(users);
-        res.end();
+    public save = (req: Request, res: Response, next: NextFunction) => {
+        console.log('UserController: save ');
+        const { email, password, role, ownerId } = req.body;
+        const user: UserInterface = {
+            email,
+            password,
+            role,
+            ownerId,
+        };
+        userService.save(user)
+            .then((result) => {
+                res.send(result._id);
+                res.end('saved...');
+            })
+            .catch((error) => {
+                res.end(error);
+            });
+    }
+
+    public update = (req: Request, res: Response, next: NextFunction) => {
+        console.log('UserController: update ');
+        const { id, email, password, role, ownerId } = req.body;
+        const user: UserInterface = {
+            id,
+            email,
+            password,
+            role,
+            ownerId,
+        };
+        userService.update(user)
+            .then((updatedUser: UserInterface) => {
+                res.send(updatedUser);
+                res.end();
+            })
+            .catch((error) => {
+                res.end(error);
+            });
+    }
+
+    public remove = (req: Request, res: Response, next: NextFunction) => {
+        console.log('UserController: remove ');
+        const { id } = req.body;
+        userService.remove(id).then(() => {
+            res.end('removed');
+        }).catch((error) => {
+            console.error(error);
+            res.end('error');
+        });
     }
 
 }

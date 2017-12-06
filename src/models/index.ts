@@ -8,7 +8,7 @@ import { companySchema } from '../schemas/companySchema';
 import { customerSchema } from '../schemas/customerSchema';
 import { orderSchema } from '../schemas/orderSchema';
 
-export const Company = mongoose.model<CompanyModelInterface>('Company', companySchema);
-export const Customer = mongoose.model<CustomerModelInterface>('Customer', customerSchema);
-export const Order = mongoose.model<OrderModelInterface>('Order', orderSchema);
-export const User = mongoose.model<UserModelInterface>('User', userSchema);
+export const CompanyModel = mongoose.model<CompanyModelInterface>('Company', companySchema);
+export const CustomerModel = mongoose.model<CustomerModelInterface>('Customer', customerSchema);
+export const OrderModel = mongoose.model<OrderModelInterface>('Order', orderSchema);
+export const UserModel = mongoose.model<UserModelInterface>('User', userSchema);

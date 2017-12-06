@@ -6,9 +6,11 @@ export const userSchema: Schema = new Schema({
     role: String,
     ownerId: String,
     createdAt: Date,
+    updatedAt: Date,
+    deletedAt: Date,
 });
 
-userSchema.pre('save', function (next) {
+userSchema.pre('save', (next) => {
     if (!this.createdAt) {
         this.createdAt = new Date();
     }

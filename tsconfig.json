@@ -7,7 +7,13 @@
     "target": "es2015",
     "module": "commonjs",
     "noImplicitAny": true,
-    "types" : ["node"]
+    "types" : [
+      "node",
+      "mongoose",
+      "errorhandler",
+      "mongodb",
+      "body-parser"
+    ]
   },
   "include": [
     "src/**/*"
