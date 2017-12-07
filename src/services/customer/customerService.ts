@@ -1,18 +1,18 @@
-import { UserInterface } from '../../interfaces/UserInterface';
-import { UserModel } from '../../models/index';
+import { CustomerInterface } from '../../interfaces/CustomerInterface';
+import { CustomerModel } from '../../models/index';
 
-export class UserService {
+export class CustomerService {
 
     constructor() {
-        console.log('UserService constructor');
+        console.log('CustomerService constructor');
     }
 
     public list = async (offset: number, count: number) => {
-        console.log('getUsers, offset:' + offset + ' count:' + count);
-        let users : UserInterface[] = [];
+        console.log('getCustomers, offset:' + offset + ' count:' + count);
+        let users : CustomerInterface[] = [];
         try {
             const query =
-                UserModel.find(
+                CustomerModel.find(
                     {
                         deletedAt : null,
                     },
@@ -29,54 +29,55 @@ export class UserService {
     }
 
     public get = async (id: string) => {
-        console.log('getUser');
-        let user: UserInterface | null | undefined;
+        console.log('getCustomer');
+        let customer: CustomerInterface | null | undefined;
         try {
-            const query = UserModel
+            const query = CustomerModel
                 .findOne(
                 {
                     _id : id,
                     deletedAt : null,
                 },
                 );
-            user = await query.exec();
+            customer = await query.exec();
         } catch (err) {
             console.error(err);
         }
-        return user;
+        return customer;
     }
 
-    public update = async (user: UserInterface) => {
-        console.log('update user');
+    public update = async (customer: CustomerInterface) => {
+        console.log('update customer');
         try {
-            const query = UserModel
+            const query = CustomerModel
                 .findOneAndUpdate(
                 {
-                    _id : user.id,
+                    _id : customer.id,
                 },
                 {
-                    email : user.email,
-                    password : user.password,
-                    role: user.role,
-                    ownerId: user.ownerId,
+                    firstName : customer.firstName,
+                    lastName : customer.lastName,
+                    contacts: customer.contacts,
+                    orders: customer.orders,
+                    comments: customer.comments,
                     updatedAt: new Date(),
                 },
-            );
+                );
             await query.exec();
         } catch (err) {
             console.error(err);
         }
-        return user;
+        return customer;
     }
 
-    public save = (user: UserInterface) => {
-        return new UserModel(user).save();
+    public save = (customer: CustomerInterface) => {
+        return new CustomerModel(customer).save();
     }
 
     public remove = async (id: string) => {
-        console.log('remove user');
+        console.log('remove customer');
         try {
-            const query = UserModel
+            const query = CustomerModel
                 .findOneAndUpdate(
                 {
                     _id : id,

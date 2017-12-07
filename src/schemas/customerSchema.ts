@@ -4,8 +4,9 @@ export const customerSchema: Schema = new Schema({
     firstName: String,
     lastName: String,
     contacts: Object,
-    orders: [Schema.Types.ObjectId],
-    comments: [Schema.Types.ObjectId],
+    orders: [String],
+    comments: [String],
     createdAt: Date,
     deletedAt: Date,
+    updatedAt: Date,
 });
