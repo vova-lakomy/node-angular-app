@@ -6,7 +6,8 @@ export const companySchema: Schema = new Schema({
     description: String,
     pricing: Object,
     contacts: Object,
-    orders: [Schema.Types.ObjectId],
+    orders: [String],
     createdAt: Date,
     deletedAt: Date,
+    updatedAt: Date,
 });

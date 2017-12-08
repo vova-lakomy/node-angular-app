@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose';
 
 export const orderSchema: Schema = new Schema({
-    customerId: Schema.Types.ObjectId,
-    companyId: Schema.Types.ObjectId,
+    customerId: String,
+    companyId: String,
     objectAddress: Object,
     cleaningType: String,
     daysOfWeek: [Number],
@@ -11,4 +11,5 @@ export const orderSchema: Schema = new Schema({
     status: String,
     createdAt: Date,
     deletedAt: Date,
+    updatedAt: Date,
 });

@@ -1,18 +1,18 @@
-import { CustomerInterface } from '../../interfaces/CustomerInterface';
-import { CustomerModel } from '../../models';
+import { OrderModel } from '../../models';
+import { OrderInterface } from '../../interfaces/OrderInterface';
 
-export class CustomerService {
+export class OrderService {
 
     constructor() {
-        console.log('CustomerService constructor');
+        console.log('OrderService constructor');
     }
 
     public list = async (offset: number, count: number) => {
-        console.log('getCustomers, offset:' + offset + ' count:' + count);
-        let customers : CustomerInterface[] = [];
+        console.log('getOrders, offset:' + offset + ' count:' + count);
+        let orders : OrderInterface[] = [];
         try {
             const query =
-                CustomerModel.find(
+                OrderModel.find(
                     {
                         deletedAt : null,
                     },
@@ -21,45 +21,48 @@ export class CustomerService {
                         skip : offset,
                         limit : count,
                     });
-            customers = await query.exec();
+            orders = await query.exec();
         } catch (err) {
             console.error(err);
         }
-        return customers;
+        return orders;
     }
 
     public get = async (id: string) => {
-        console.log('getCustomer');
-        let customer: CustomerInterface | null | undefined;
+        console.log('getOrder');
+        let order: OrderInterface | null | undefined;
         try {
-            const query = CustomerModel
+            const query = OrderModel
                 .findOne(
                 {
                     _id : id,
                     deletedAt : null,
                 },
                 );
-            customer = await query.exec();
+            order = await query.exec();
         } catch (err) {
             console.error(err);
         }
-        return customer;
+        return order;
     }
 
-    public update = async (customer: CustomerInterface) => {
-        console.log('update customer');
+    public update = async (order: OrderInterface) => {
+        console.log('update order');
         try {
-            const query = CustomerModel
+            const query = OrderModel
                 .findOneAndUpdate(
                 {
-                    _id : customer.id,
+                    _id : order.id,
                 },
                 {
-                    firstName : customer.firstName,
-                    lastName : customer.lastName,
-                    contacts: customer.contacts,
-                    orders: customer.orders,
-                    comments: customer.comments,
+                    customerId : order.customerId,
+                    companyId : order.companyId,
+                    objectAddress: order.objectAddress,
+                    cleaningType: order.cleaningType,
+                    daysOfWeek: order.daysOfWeek,
+                    desiredDateTime: order.desiredDateTime,
+                    regularity: order.regularity,
+                    status: order.status,
                     updatedAt: new Date(),
                 },
                 );
@@ -67,17 +70,17 @@ export class CustomerService {
         } catch (err) {
             console.error(err);
         }
-        return customer;
+        return order;
     }
 
-    public save = (customer: CustomerInterface) => {
-        return new CustomerModel(customer).save();
+    public save = (order: OrderInterface) => {
+        return new OrderModel(order).save();
     }
 
     public remove = async (id: string) => {
-        console.log('remove customer');
+        console.log('remove order');
         try {
-            const query = CustomerModel
+            const query = OrderModel
                 .findOneAndUpdate(
                 {
                     _id : id,

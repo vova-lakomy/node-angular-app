@@ -4,7 +4,7 @@ export const routes = [
     {
         path : '/api/users/',
         method : 'GET',
-        middleware : [userController.getAll],
+        middleware : [userController.list],
     },
     {
         path : '/api/users/:userId',

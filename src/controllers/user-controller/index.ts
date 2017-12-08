@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { UserInterface } from '../../interfaces/UserInterface';
 import { userService } from '../../services';
+import { User } from '../../interfaces/impl/User';
 
 
 export class UserController {
@@ -9,12 +10,12 @@ export class UserController {
         console.log('UserController constructor');
     }
 
-    public getAll = (req: Request, res: Response, next: NextFunction) => {
+    public list = (req: Request, res: Response, next: NextFunction) => {
         const offset: number = Number(req.query['offset'] || 0);
         const count: number = Number(req.query['count'] || 10);
         userService.list(offset, count)
             .then((userList: UserInterface[]) => {
-                res.json(userList);
+                res.json(User.fromList(userList));
                 res.end();
             })
             .catch((error) => {
@@ -28,7 +29,7 @@ export class UserController {
         console.log('UserController: get ');
         const id = req.params['userId'];
         userService.get(id).then((user: UserInterface) => {
-            res.json(user);
+            res.json(User.fromUser(user));
             res.end();
         }).catch((error) => {
             console.error(error);
@@ -66,7 +67,7 @@ export class UserController {
             ownerId,
         };
         userService.update(user)
-            .then((updatedUser: UserInterface) => {
+            .then((updatedUser: User) => {
                 res.send(updatedUser);
                 res.end();
             })

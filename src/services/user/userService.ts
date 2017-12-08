@@ -1,5 +1,6 @@
 import { UserInterface } from '../../interfaces/UserInterface';
-import { UserModel } from '../../models/index';
+import { UserModel } from '../../models';
+import { User } from '../../interfaces/impl/User';
 
 export class UserService {
 
@@ -37,6 +38,24 @@ export class UserService {
                 {
                     _id : id,
                     deletedAt : null,
+                },
+                );
+            user = await query.exec();
+        } catch (err) {
+            console.error(err);
+        }
+        return user;
+    }
+
+    public getByOwnerId = async (id?: string) => {
+        console.log('getUserByOwnerId');
+        let user: UserInterface | null | undefined;
+        try {
+            const query = UserModel
+                .findOne(
+                {
+                    ownerId: id,
+                    deletedAt: null,
                 },
                 );
             user = await query.exec();
@@ -90,4 +109,5 @@ export class UserService {
             console.error(err);
         }
     }
+
 }
