@@ -4,6 +4,7 @@ import { User } from './User';
 export class Company implements CompanyInterface {
 
     id?: string;
+    email?: string;
     shortName?: string;
     fullName?: string;
     description?: string;
@@ -21,6 +22,7 @@ export class Company implements CompanyInterface {
     static fromCompany(company: CompanyInterface): Company {
         const companyInstance: Company = new Company();
         companyInstance.id = company.id;
+        companyInstance.email = company.email;
         companyInstance.shortName = company.shortName;
         companyInstance.fullName = company.fullName;
         companyInstance.description = company.description;

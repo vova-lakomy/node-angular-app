@@ -10,7 +10,7 @@ export const userSchema: Schema = new Schema({
     deletedAt: Date,
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function (next) {
     if (!this.createdAt) {
         this.createdAt = new Date();
     }

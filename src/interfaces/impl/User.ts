@@ -1,16 +1,18 @@
 import { UserInterface } from '../UserInterface';
+import { UserRole } from '../../enumerations/userRole';
 
 export class User implements UserInterface {
     id?: string;
     email?: string;
     password?: string;
-    role?: string;
+    role?: UserRole;
     ownerId?: string;
     createdAt?: Date;
     deletedAt?: Date;
     updatedAt?: Date;
 
     constructor() {
+        // console.log('User constructor');
     }
     
     static fromUser(user: UserInterface): User {

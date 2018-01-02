@@ -1,4 +1,4 @@
-enum CleaningType {
+export enum CleaningType {
     StandardRoomCleaning = 'STANDARD',
     SpringCleaning = 'SPRING',
     CleaningAfterRepair = 'AFTER_REPAIR',

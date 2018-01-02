@@ -1,3 +1,7 @@
+import { CleaningType } from '../enumerations/cleaningType';
+import { CleanRegularity } from '../enumerations/cleanRegularity';
+import { OrderStatus } from '../enumerations/orderStatus';
+
 export interface OrderInterface {
     id?: string;
     customerId?: string;

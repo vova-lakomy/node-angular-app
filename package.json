@@ -26,6 +26,7 @@
     "@types/mongodb": "2.2.15",
     "@types/mongoose": "4.7.27",
     "gulp": "3.9.1",
+    "del": "3.0.0",
     "gulp-typescript": "3.2.3",
     "ts-node": "3.3.0",
     "tslint": "5.8.0",

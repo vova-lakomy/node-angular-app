@@ -89,6 +89,8 @@ export class UserService {
     }
 
     public save = (user: UserInterface) => {
+        console.log('UserService save()');
+        console.log(user);
         return new UserModel(user).save();
     }
 

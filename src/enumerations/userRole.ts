@@ -1,4 +1,4 @@
-enum UserRole {
+export enum UserRole {
     Guest = 'GUEST',
     Customer = 'CUSTOMER',
     Company = 'COMPANY',

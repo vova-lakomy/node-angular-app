@@ -4,6 +4,8 @@ import { CompanyInterface } from '../../interfaces/CompanyInterface';
 import { Company } from '../../interfaces/impl/Company';
 import { User } from '../../interfaces/impl/User';
 import { UserInterface } from '../../interfaces/UserInterface';
+import { UserRole } from '../../enumerations/userRole';
+import { encryptPassword } from '../../libs/util';
 
 export class CompanyController {
 
@@ -49,29 +51,51 @@ export class CompanyController {
 
     public save = (req: Request, res: Response, next: NextFunction) => {
         console.log('CompanyController: save ');
-        const { email, password, role, ownerId } = req.body;
+        const { shortName, email, fullName, description, pricing, contacts, password } = req.body;
         const company: CompanyInterface = {
-            // todo
+            shortName,
+            email,
+            fullName,
+            description,
+            pricing,
+            contacts,
         };
         companyService.save(company)
             .then((result) => {
-                res.send(result._id);
-                res.end('saved...');
+                const user : UserInterface = new User();
+                user.ownerId = result._id;
+                user.email = result.email;
+                user.role = UserRole.Company;
+                user.password = encryptPassword(password);
+                user.createdAt = result.createdAt;
+                userService.save(user)
+                    .then((result) => {
+                        res.json(result._id);
+                        res.end();
+                    })
+                    .catch((error) => {
+                        next(error);
+                    });
             })
             .catch((error) => {
-                res.end(error);
+                next(error);
             });
     }
 
     public update = (req: Request, res: Response, next: NextFunction) => {
         console.log('CompanyController: update ');
-        const { id, email, password, role, ownerId } = req.body;
-        const user: CompanyInterface = {
-            // todo
+        const { shortName, email, fullName, description, pricing, contacts } = req.body;
+        const company: CompanyInterface = {
+            shortName,
+            email,
+            fullName,
+            description,
+            pricing,
+            contacts,
         };
-        companyService.update(user)
-            .then((updatedUser: CompanyInterface) => {
-                res.send(updatedUser);
+        companyService.update(company)
+            .then((updatedCompany: CompanyInterface) => {
+                res.json(updatedCompany);
                 res.end();
             })
             .catch((error) => {

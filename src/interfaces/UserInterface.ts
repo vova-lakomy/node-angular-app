@@ -1,8 +1,10 @@
+import { UserRole } from '../enumerations/userRole';
+
 export interface UserInterface{
     id?: string;
     email?: string;
     password?: string;
-    role?: string;
+    role?: UserRole;
     ownerId?: string;
     createdAt?: Date;
     deletedAt?: Date;
