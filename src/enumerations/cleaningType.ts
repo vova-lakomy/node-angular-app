@@ -7,5 +7,4 @@ export enum CleaningType {
     CleaningOfFurnitureAndCarpets = 'FURNITURE_AND_CARPETS',
     IndustrialCleaning = 'INDUSTRIAL',
     PoolCleaning = 'POOL',
-
 }

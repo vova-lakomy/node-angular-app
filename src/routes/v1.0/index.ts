@@ -1,4 +1,4 @@
-import { companyController, userController } from '../../controllers';
+import { companyController, assetsController, userController } from '../../controllers';
 
 export const routes = [
     {
@@ -50,6 +50,36 @@ export const routes = [
         path : '/api/companies/remove',
         method : 'POST',
         middleware : [companyController.remove],
+    },
+    {
+        path : '/',
+        method : 'GET',
+        middleware : [assetsController.index],
+    },
+    {
+        path : '/*.js',
+        method : 'GET',
+        middleware : [assetsController.get],
+    },
+    {
+        path : '/*.css',
+        method : 'GET',
+        middleware : [assetsController.get],
+    },
+    {
+        path : '/*.img',
+        method : 'GET',
+        middleware : [assetsController.get],
+    },
+    {
+        path : '/*.png',
+        method : 'GET',
+        middleware : [assetsController.get],
+    },
+    {
+        path : '/*.ico',
+        method : 'GET',
+        middleware : [assetsController.get],
     },
 ];
 
