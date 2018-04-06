@@ -1,36 +1,16 @@
 import React, { Component } from "react";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+import styles from "./App.css";
+import '../../node_modules/font-awesome/css/font-awesome.min.css'
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { counter: 0 };
-    }
+const App = () => (
+    <div>
+        <Header />
+        <Main />
+        <Footer/>
+    </div>
+)
 
-    componentDidMount() {
-        this.interval = setInterval(
-            this.increment.bind(this),
-            1000
-        )
-    }
-
-    increment() {
-        this.setState(({ counter }) => {
-            return {counter: counter + 1};
-        });
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval)
-    }
-
-    render() {
-        const { counter } = this.state;
-
-        return (
-            <header>
-                <div>Webpack is doing its thing with React and ES2015</div>
-                <div>{counter}</div>
-            </header>
-        );
-    }
-}
+export default App

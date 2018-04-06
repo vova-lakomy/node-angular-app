@@ -1,0 +1,17 @@
+#login-form {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+#login-form input {
+    border: 1px solid white;
+    margin: 0 10px;
+    height: 24px;
+    line-height: 24px;
+    color: #676767;
+    padding: 1px 5px;
+    background-color: white;
+    outline-color: #fbecd1;
+}

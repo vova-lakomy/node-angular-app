@@ -1,5 +1,6 @@
 import Config from 'webpack-config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default new Config().merge({
     entry: './src/index.js',
@@ -19,13 +20,13 @@ export default new Config().merge({
             },
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
                 use: [
                     'file-loader'
                 ]
@@ -36,5 +37,7 @@ export default new Config().merge({
         new HtmlWebpackPlugin({
             template: 'index.html',
             inject: "body"
-        })]
+        }),
+        new ExtractTextPlugin("styles.css"),
+    ]
 });

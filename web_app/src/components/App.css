@@ -1,0 +1,52 @@
+/*   #99D3DF   */
+/*   #88BBD6   */
+/*   #CDCDCD   */
+/*   #E9E9E9   */
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #E9E9E9;
+    /*background-color: #CDCDCD;*/
+    color: #676767;
+    font-family: sans-serif;
+}
+
+#root {
+
+}
+
+body a {
+     color: #020075;
+     text-decoration: none;
+     transition: color 250ms, text-shadow 250ms;
+}
+
+body a:hover {
+    color: #0200bf;
+    text-decoration: underline;
+    transition: color 150ms, text-shadow 250ms;
+}
+
+.button {
+    color: white;
+    margin: 3px 5px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 18px;
+    border: 1px solid white;
+    transition: color 250ms, text-shadow 250ms;
+}
+
+.button:hover {
+    cursor: pointer;
+    text-shadow: 0 0 5px white;
+    transition: color 250ms, text-shadow 250ms;
+}
+
+.button.disabled {
+    cursor: not-allowed;
+}
+
+.button.disabled:hover {
+    cursor: not-allowed;
+}
