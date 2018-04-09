@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import {Link, Redirect} from "react-router-dom";
-import NavMenu from "./nav-menu/NavMenu";
-import LoginForm from "./login-form/LoginForm";
+import NavBar from "../nav-bar/NavBar";
+import LoginForm from "../forms/login-form/LoginForm";
 
 const Header = () => (
     <header>
-        <NavMenu>
+        <NavBar>
             <LoginForm/>
-        </NavMenu>
+        </NavBar>
     </header>
-)
+);
 
 export default Header

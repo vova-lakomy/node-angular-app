@@ -1,0 +1,25 @@
+.form-item {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    padding: 5px;
+}
+
+input, input[type=submit] {
+    /*font-weight: 400;*/
+    font-size: 14px;
+    color: #676767;
+    height: 21px;
+    line-height: 21px;
+    padding: 1px;
+    border: 1px solid #676767;
+}
+
+input[type=submit] {
+    -webkit-appearance: none;
+    margin: 0;
+    display: block;
+    box-sizing: content-box;
+    width: 100%;
+}

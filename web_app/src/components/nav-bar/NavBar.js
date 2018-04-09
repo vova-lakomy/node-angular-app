@@ -1,7 +1,7 @@
 import React, { Component}  from 'react';
 import CSS from './NavMenu.css'
 
-const NavMenu = ({ children }) => {
+const NavBar = ({ children }) => {
     return (
         <nav className={'nav-bar'}>
             { children }
@@ -9,4 +9,4 @@ const NavMenu = ({ children }) => {
     )
 };
 
-export default NavMenu
+export default NavBar

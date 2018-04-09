@@ -12,7 +12,7 @@ export default class LoginForm extends Component {
         return (
             <form id={'login-form'} className={'login'}>
                 <input type={'text'} name={'email'}/>
-                <div className={'button button-sign-in'}>Sign In</div>
+                <div className={'button button-white'}>Sign In</div>
             </form>
         );
     }
