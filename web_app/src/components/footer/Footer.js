@@ -1,7 +1,10 @@
 import React from 'react'
+import css from './Footer.css'
 
 const Footer = () => (
-    <div>Footer <i className="fa fa-thumbs-up"></i></div>
+    <footer>
+        <div>footer</div>
+    </footer>
 );
 
 export default Footer

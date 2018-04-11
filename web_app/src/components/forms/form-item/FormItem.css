@@ -18,8 +18,8 @@ input, input[type=submit] {
 
 input[type=submit] {
     -webkit-appearance: none;
-    margin: 0;
+    margin: 5px;
     display: block;
+    padding: 4px 40px;
     box-sizing: content-box;
-    width: 100%;
 }

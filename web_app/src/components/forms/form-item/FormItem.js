@@ -1,11 +1,11 @@
 import React, { Component}  from 'react';
 import CSS from './FormItem.css'
 
-const FormItem = (props) => {
+const FormItem = ({id, children, className, type, name}) => {
     return (
         <div className={'form-item'}>
-            <label htmlFor={props.id}>{props.children}</label>
-            <input id={props.id} className={props.className} type={props.type} name={props.name}/>
+            <label htmlFor={id}>{children}</label>
+            <input id={id} className={className} type={type} name={name}/>
         </div>
     )
 };

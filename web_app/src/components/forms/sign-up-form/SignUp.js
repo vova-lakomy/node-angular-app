@@ -7,7 +7,7 @@ export default class SignUpForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state.signedUp = false;
+        this.signedUp = false;
         this.signUp = this.signUp.bind(this);
     }
 
