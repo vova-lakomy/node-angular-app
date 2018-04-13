@@ -7,14 +7,15 @@ export default class SignUpForm extends Component {
 
     constructor(props) {
         super(props);
-        this.signedUp = false;
+        this.state = {signedUp: false};
         this.signUp = this.signUp.bind(this);
     }
 
-    signUp(state = {}, action) {
+    signUp(state = {signedUp: false}, action) {
         switch (action.type) {
             case 'SET_SIGNED_UP':
                 console.log('perform sign up');
+                this.setState();
                 return {signedUp : true};
             default :
                 return state;
