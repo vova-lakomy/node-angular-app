@@ -8,7 +8,6 @@ const Header = () => (
     <header>
         <NavBar>
             <Clock/>
-            <LoginForm/>
         </NavBar>
     </header>
 );

@@ -13,7 +13,7 @@ export default new Config().merge({
                     {
                         loader: "babel-loader",
                         options: {
-                            "presets": [["es2015", {"modules": false}], "react"]
+                            "presets": [["es2017"], "react"]
                         }
                     }
                 ],
